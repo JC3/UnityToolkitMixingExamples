@@ -59,3 +59,8 @@ A lot of explanation is in the source as comments, so check those out.
 Also, the IMGUI-based containers may "jitter" a bit as you resize the windows. This is just 
 an unavoidable quirk of when IMGUI makes calculate layout rects available. You'll notice
 that the UI Toolkit-based example is much snappier and more well-behaved.
+
+## GUILayoutEx
+
+This has a utility class with some methods for laying out UI Toolkit elements on IMGUI 
+windows that you can use if you want. It also has an example of it being used.
