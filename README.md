@@ -27,26 +27,35 @@ follow the first rule above, make sure the container itself uses absolute positi
 lay the container out in a `GetRect` space -- the child components in the container will be 
 laid out by UI Toolkit as usual. ExampleWindow2 demonstrates this.
 
+The reason for using `GUILayoutUtility.GetRect` is that it basically does exactly what we
+need: reserve space in an IMGUI layout without creating any actual new elements itself. You
+could also use an empty `Box`, `Label`, an Area, whatever, then use `GetLastRect` to find 
+its placement and position your UI Toolkit elements on top of it. You would have the overhead
+of the overlapping IMGUI element but I guess it could be useful if you want some IMGUI thing
+in the background of your UI Toolkit element.
+
+## Examples
+
 Each of the example windows here provide a layout that consists of an IMGUI label on top, two
 UI Toolkit ListViews in the middle, and some IMGUI buttons on the bottom:
 
 ![](https://github.com/JC3/UnityToolkitMixingExamples/raw/master/windows.png)
 
-## ExampleWindow1.cs
+### ExampleWindow1.cs
 
 This demonstrates using IMGUI to completely lay out all components, including VisualElements.
  
-## ExampleWindow2.cs
+### ExampleWindow2.cs
 
 This demonstrates using IMGUI to lay out most components, but also allowing UI Toolkit to lay
 out specific subgroups of VisualElements.
 
-## ExampleWindow3.cs
+### ExampleWindow3.cs
 
 This demonstrates using UI Toolkit to completely lay out most components, but also allowing 
 IMGUI to lay out specific subgroups of IMGUI components (via IMGUIContainer).
 
-## Example.cs
+### Example.cs
 
 This just has some mostly uninteresting utility functions to keep boilerplate stuff from 
 cluttering up the other files. It also has some global constants that make it easier to give
